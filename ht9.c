@@ -1,4 +1,7 @@
 /* ht9.c
+ * this program must be run as super user to access usb devices
+ * sudo apt-get install libftdi-dev
+ * sudo apt-get install libncurses5-dev
  * compile: gcc -O2 ht9.c -lftdi -lncurses -o ht9
  * this program transmits dmx-style rgb packets
  * modified to adjust to software PWM on the Mrfs
@@ -14,13 +17,13 @@
  * for testing purposes. Thanks Clint
  */
 
-//#include <ftdi.h>
+#include <ftdi.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 /* #include <time.h> */
 /* #include <sys/times.h> */
-//#include <curses.h>
+#include <curses.h>
 
 #define DOT   100000
 #define DASH  300000
