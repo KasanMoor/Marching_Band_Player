@@ -41,6 +41,7 @@ uint8_t dest[96] = { };
 
 void rotate13 (uint8_t arr[]);
 void chase(uint8_t arr[]);
+void chaseUpper(uint8_t arr[]);
 void printPack(uint8_t arr[]);
 
 int main()
@@ -119,11 +120,11 @@ int main()
                            255,255,0,   255,255,0,   255,255,0,   255,255,0,
                            255,255,0,   255,255,0,   255,255,0,   255,255,0};
 
-  uint8_t chasePack[96] = {255,215,0,   0,0,0,       0,0,0,       0,0,0,
+  uint8_t chasePack[96] = {255,215,0,   255,215,0,       255,215,0,       0,0,0,
                            0,0,0,       0,0,0,       0,0,0,       0,0,0,
                            0,0,0,       0,0,0,       0,0,0,       0,0,0,
                            0,0,0,       0,0,0,       0,0,0,       0,0,0,
-                           0,0,0,       0,0,0,       0,0,0,       0,0,0,
+                           255,215,0,   255,215,0,       255,215,0,       0,0,0,
                            0,0,0,       0,0,0,       0,0,0,       0,0,0,
                            0,0,0,       0,0,0,       0,0,0,       0,0,0,
                            0,0,0,       0,0,0,       0,0,0,       0,0,0};
@@ -323,6 +324,47 @@ uint8_t twnk8Pack[96] = {255,255,0, 255,215,0, 80,80,0, 80,75,0, 255,215,0, 80,8
 
   uint8_t rain16Pack[96] = {255,0,0, 0,255,0, 0,0,255, 255,255,0, 0,255,255, 255,0,255, 75,0,130, 255,127,80, 30,144,255, 255,215,0, 220,20,60, 141,239,79, 31,194,109, 0,206,209, 186,85,211, 255,255,255, 255,0,0, 0,255,0, 0,0,255, 255,255,0, 0,255,255, 255,0,255, 75,0,130, 255,127,80, 30,144,255, 255,215,0, 220,20,60, 141,239,79, 31,194,109, 0,206,209, 186,85,211, 255,255,255};
 
+  uint8_t spark1Pack[96] = {
+    0,0,0, 0,0,0,   0,0,0,   0,0,0, 
+    0,0,0,   0,0,0, 0,0,0, 0,0,0,
+    0,0,0, 0,0,0, 0,0,0, 0,0,0,
+    0,0,0, 0,0,0, 0,206,209, 0,0,0,
+    0,0,0, 0,0,0, 0,0,0, 0,0,0,
+    0,0,0,   0,0,0, 0,0,0, 0,0,0,
+    0,0,0, 0,0,0, 0,0,0, 0,0,0,
+    0,0,0, 0,0,0, 0,206,209, 0,0,0};
+
+  uint8_t spark2Pack[96] = {
+    0,0,0, 0,0,0,   0,0,0,   0,0,0, 
+    0,0,0,   0,0,0, 0,0,0, 0,0,0,
+    0,0,0, 0,0,0, 0,0,0, 0,0,0,
+    0,0,0, 0,0,0, 131,194,209, 0,0,0,
+    0,0,0, 0,0,0, 0,0,0, 0,0,0,
+    0,0,0,   0,0,0, 0,0,0, 0,0,0,
+    0,0,0, 0,0,0, 0,0,0, 0,0,0,
+    0,0,0, 0,0,0, 131,194,209, 0,0,0};
+
+  uint8_t spark3Pack[96] = {
+    0,0,0, 0,0,0,   0,0,0,   0,0,0, 
+    0,0,0,   0,0,0, 0,0,0, 0,0,0,
+    0,0,0, 0,0,0, 0,0,0, 0,0,0,
+    0,0,0, 0,0,0, 141,239,79, 0,0,0,
+    0,0,0, 0,0,0, 0,0,0, 0,0,0,
+    0,0,0,   0,0,0, 0,0,0, 0,0,0,
+    0,0,0, 0,0,0, 0,0,0, 0,0,0,
+    0,0,0, 0,0,0, 141,239,79, 0,0,0};
+
+  uint8_t spark4Pack[96] = {
+    0,0,0, 0,0,0,   0,0,0,   0,0,0, 
+    0,0,0,   0,0,0, 0,0,0, 0,0,0,
+    0,0,0, 0,0,0, 0,0,0, 0,0,0,
+    0,0,0, 0,0,0, 220,20,60, 0,0,0,
+    0,0,0, 0,0,0, 0,0,0, 0,0,0,
+    0,0,0,   0,0,0, 0,0,0, 0,0,0,
+    0,0,0, 0,0,0, 0,0,0, 0,0,0,
+    0,0,0, 0,0,0, 220,20,60, 0,0,0};
+
+
  uint8_t glowPack[96] = {85,80,0,  80,80,0,  80,85,0,  85,80,0,
                          80,80,0,  80,75,0,  95,90,0,  80,80,0,
                          80,80,0,  85,80,0,  80,80,0,  70,70,0,
@@ -481,6 +523,7 @@ uint8_t twnk8Pack[96] = {255,255,0, 255,215,0, 80,80,0, 80,75,0, 255,215,0, 80,8
   printw("q=sparkle; x=XMas solid; z=slow twinkle\n");
   printw("[=marqee one way; ]=marqee the other;\n");
   printw("1=snowman1; 2=snowman2; 3=tree1; 4=tree2;\n");
+  printw("i=chase; `= piano\n");
   printw("\n");
   printw("comma key <,> to stop the loops\n");
   printw("dot key <.> to quit\n");
@@ -717,6 +760,28 @@ uint8_t twnk8Pack[96] = {255,255,0, 255,215,0, 80,80,0, 80,75,0, 255,215,0, 80,8
       } while (myterm != ',');      
       break;
 
+    case '`':   // rainbow cycle
+      do {
+	myterm = getch();
+	nbytes = ftdi_write_data(ftdi, spark1Pack, m);
+	usleep(SLP);
+	nbytes = ftdi_write_data(ftdi, dPack, m);
+	usleep(SLP);
+	nbytes = ftdi_write_data(ftdi, spark2Pack, m);
+	usleep(SLP);
+	nbytes = ftdi_write_data(ftdi, dPack, m);
+	usleep(SLP);
+	nbytes = ftdi_write_data(ftdi, spark3Pack, m);
+	usleep(SLP);
+	nbytes = ftdi_write_data(ftdi, dPack, m);
+	usleep(SLP);
+	nbytes = ftdi_write_data(ftdi, spark4Pack, m);
+	usleep(SLP);
+	nbytes = ftdi_write_data(ftdi, dPack, m);
+	usleep(SLP);
+      } while (myterm != ',');      
+      break;
+
     case '1':   // snowman w/ white
       do {
 	myterm = getch();
@@ -840,6 +905,7 @@ uint8_t twnk8Pack[96] = {255,255,0, 255,215,0, 80,80,0, 80,75,0, 255,215,0, 80,8
 	nbytes = ftdi_write_data(ftdi, chasePack, m);
 	usleep(DAB);
         chase(chasePack);
+        chaseUpper(chasePack);
       } while (myterm != ',');  
       break;
 
@@ -927,4 +993,23 @@ void printPack(uint8_t pack[])
         printf("%d g: %d\n", i+1, pack[i+1]);
         printf("%d b: %d\n", i+2, pack[i+2]);
     }
+}
+
+void chaseUpper(uint8_t pack[])
+{
+    uint8_t newPack[96];
+    int i, numChannels = 14;
+    int tempr = pack[48];
+    int tempg = pack[49];
+    int tempb = pack[50];
+    for(i=48; i<numChannels*3+48; i+=3)
+    {
+        pack[i] = pack[i+3];
+        pack[i+1] = pack[i+4];
+        pack[i+2] = pack[i+5];
+    }
+    pack[numChannels*3+48] = tempr;
+    pack[numChannels*3+1+48] = tempg;
+    pack[numChannels*3+2+48] = tempb;
+//    printPack(pack);
 }

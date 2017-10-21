@@ -838,7 +838,7 @@ uint8_t twnk8Pack[96] = {255,255,0, 255,215,0, 80,80,0, 80,75,0, 255,215,0, 80,8
       do {
 	myterm = getch();
 	nbytes = ftdi_write_data(ftdi, chasePack, m);
-	usleep(DAB);
+	usleep(DOT);
         chase(chasePack);
       } while (myterm != ',');  
       break;
@@ -902,7 +902,7 @@ static size_t getEncodedBufferSize(size_t sourceSize)
 void chase(uint8_t pack[])
 {
     uint8_t newPack[96];
-    int i, numChannels = 14;
+    int i, numChannels = 7;
     int tempr = pack[0];
     int tempg = pack[1];
     int tempb = pack[2];
@@ -921,7 +921,7 @@ void chase(uint8_t pack[])
 void printPack(uint8_t pack[])
 {
     printf("printing\n");
-    int i=0, numChannels = 14;
+    int i=0, numChannels = 7;
     for(i=0; i<numChannels*3; i+=3) {
         printf("%d r: %d\n", i, pack[i]);
         printf("%d g: %d\n", i+1, pack[i+1]);
